@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="imdb" default="jar">
+
+    <path id="cpath">
+      <fileset dir="lib">
+        <include name="**/*.jar"/>
+      </fileset>
+    </path>
+
+    <target name="init">
+        <mkdir dir="out/classes"/>
+    </target>
+
+    <target name="clean">
+        <delete dir="out" includeemptydirs="true">
+            <include name="**/*"/>
+        </delete>
+    </target>
+
+    <target name="compile" depends="init">
+        <javac srcdir="src"
+         destdir="out/classes"
+         classpathref="cpath"
+         debug="on"/>
+    </target>
+
+    <target name="jar" depends="compile">
+        <jar
+            destfile="out/imdb.jar"
+            basedir="out/classes">
+            <manifest>
+                <attribute name="Main-Class" value="MainStandAlone"/>
+            </manifest>
+        </jar>
+        <jar
+            destfile="out/icons.jar">
+            <fileset dir="lib">
+                <include name="**/*.png"/>
+            </fileset>
+            <fileset dir="lib">
+                <include name="**/*.otf"/>
+            </fileset>
+        </jar>
+
+    </target>
+
+    <target name="deploy" depends="clean,jar">
+        <copy todir="/Users/claus/Bin/IMDB">
+            <fileset dir="out">
+                <include name="*.jar"/>
+            </fileset>
+            <fileset dir="lib">
+                <include name="*.jar"/>
+            </fileset>
+            <fileset dir="shell">
+                <include name="*.sh"/>
+            </fileset>
+        </copy>
+        <chmod file="/Users/claus/Bin/IMDB/imdb.sh" perm="700"/>
+    </target>
+
+</project>

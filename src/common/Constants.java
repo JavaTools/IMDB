@@ -30,9 +30,12 @@ public class Constants
     {
         try
         {
-            fontStory = Font.createFont(Font.TRUETYPE_FONT, ClassLoader.getSystemResourceAsStream("fonts/Gotham-Medium.otf")).deriveFont(Font.PLAIN, 32);
-            fontTitle = Font.createFont(Font.TRUETYPE_FONT, ClassLoader.getSystemResourceAsStream("fonts/Gotham-Bold.otf")).deriveFont(Font.PLAIN, 50);
-            fontGenre = Font.createFont(Font.TRUETYPE_FONT, ClassLoader.getSystemResourceAsStream("fonts/Gotham-Medium.otf")).deriveFont(Font.PLAIN, 28);
+//            fontStory = Font.createFont(Font.TRUETYPE_FONT, ClassLoader.getSystemResourceAsStream("fonts/Gotham-Medium.otf")).deriveFont(Font.PLAIN, 32);
+//            fontTitle = Font.createFont(Font.TRUETYPE_FONT, ClassLoader.getSystemResourceAsStream("fonts/Gotham-Bold.otf")).deriveFont(Font.PLAIN, 50);
+//            fontGenre = Font.createFont(Font.TRUETYPE_FONT, ClassLoader.getSystemResourceAsStream("fonts/Gotham-Medium.otf")).deriveFont(Font.PLAIN, 28);
+            fontStory = Font.createFont(Font.TRUETYPE_FONT, ClassLoader.getSystemResourceAsStream("fonts/Montserrat-Regular.otf")).deriveFont(Font.PLAIN, 32);
+            fontTitle = Font.createFont(Font.TRUETYPE_FONT, ClassLoader.getSystemResourceAsStream("fonts/Montserrat-Bold.otf")).deriveFont(Font.PLAIN, 50);
+            fontGenre = Font.createFont(Font.TRUETYPE_FONT, ClassLoader.getSystemResourceAsStream("fonts/Montserrat-SemiBold.otf")).deriveFont(Font.PLAIN, 28);
         }
         catch (Exception ex)
         {

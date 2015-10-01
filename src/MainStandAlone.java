@@ -1,11 +1,7 @@
-import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang3.ArrayUtils;
 
 import java.io.File;
 import java.io.FileFilter;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.util.Arrays;
-import java.util.Collections;
 
 public class MainStandAlone
 {

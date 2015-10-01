@@ -1,17 +1,10 @@
 package common;
 
-import org.apache.commons.lang.StringEscapeUtils;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.params.ClientPNames;
-import org.apache.http.cookie.*;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.cookie.BrowserCompatSpec;
-import org.apache.http.params.HttpParams;
+import org.apache.commons.lang3.StringEscapeUtils;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.net.URL;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.regex.Matcher;
@@ -37,34 +30,10 @@ public class Extractor
 
 		try
 		{
-//			Pattern p = Pattern.compile("img_primary.*?<img.*?src=\\\"(.*?)\\\"", Pattern.DOTALL |Pattern.MULTILINE);
 			Pattern p = Pattern.compile("id=\"img_primary\".*?<a.*?src=\\\"(.*?)\\\"", Pattern.DOTALL |Pattern.MULTILINE);
 			Matcher m = p.matcher(content);
 			String url = m.find() ? m.group(1) : "<ERR>";
-            System.out.println("URL="+url);
-			DefaultHttpClient httpclient = new DefaultHttpClient();
-			CookieSpecFactory csf = new CookieSpecFactory() {
-				public CookieSpec newInstance(HttpParams params) {
-					return new BrowserCompatSpec() {
-						@Override
-						public void validate(Cookie cookie, CookieOrigin origin)
-						throws MalformedCookieException
-						{
-							// Oh, I am easy
-						}
-					};
-				}
-			};
-
-			httpclient.getCookieSpecs().register("easy", csf);
-			httpclient.getParams().setParameter(
-			ClientPNames.COOKIE_POLICY, "easy");
-			HttpGet httpget = new HttpGet(url);
-			HttpResponse response = httpclient.execute(httpget);
-			HttpEntity entity = response.getEntity();
-			cover = ImageIO.read(entity.getContent());
-            //System.out.println("url: " + url);
-            //System.out.println("img: " + cover);
+			cover = ImageIO.read(new URL(url));
 		}
 		catch (Exception ex)
 		{
@@ -81,7 +50,7 @@ public class Extractor
 		if (m.find()) {
             String result = m.group(1) + m.group(2);
             result = result.replaceAll("<.*?>"," ");
-            result = StringEscapeUtils.unescapeHtml(result);
+            result = StringEscapeUtils.unescapeHtml4(result);
             return result;
         } else {
 			return "<ERR>";
@@ -108,7 +77,7 @@ public class Extractor
 		Matcher m = p.matcher(content);
 		if (m.find())
 		{
-			return StringEscapeUtils.unescapeHtml(m.group(1).replace(" - IMDb",""));
+			return StringEscapeUtils.unescapeHtml4(m.group(1).replace(" - IMDb",""));
 		}
 		else
 		{

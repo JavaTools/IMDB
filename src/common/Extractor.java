@@ -88,7 +88,7 @@ public class Extractor
 	public Set<String> getGenres()
 	{
 		TreeSet<String> set = new TreeSet<String>();
-		Pattern p = Pattern.compile("/genre/(.+?)[\\?|\"]", Pattern.DOTALL | Pattern.MULTILINE);
+		Pattern p = Pattern.compile("/genre/([^?]+?)[\\?|\"]", Pattern.DOTALL | Pattern.MULTILINE);
 		Matcher m = p.matcher(content);
 		while (m.find())
 		{

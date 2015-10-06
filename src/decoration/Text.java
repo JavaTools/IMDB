@@ -12,6 +12,16 @@ import java.util.Set;
  */
 public class Text
 {
+	public static void paintTitle(BufferedImage image, Movie movie)
+	{
+		Graphics2D g2 = Constants.prepareGraphics(image);
+		g2.setFont(Constants.fontTitle);
+		g2.setColor(Color.WHITE);
+		int x = Constants.MARGIN + (movie.getCover()!=null ? Constants.MARGIN + movie.getCover().getWidth() : 0);
+		int y = Constants.MARGIN+g2.getFontMetrics().getAscent() - 15;
+		g2.drawString(movie.getTitle(), x, y);
+	}
+
 	public static void paintGenres(BufferedImage image, Movie movie)
 	{
 		Graphics2D g2 = Constants.prepareGraphics(image);
@@ -22,8 +32,8 @@ public class Text
         g2.setColor(Color.WHITE);
 
         int x = Constants.MARGIN + (movie.getCover()!=null ? Constants.MARGIN + movie.getCover().getWidth() : 0);
-		int y = Constants.MARGIN*2 + g2.getFontMetrics(Constants.fontTitle).getAscent();
-		int dy = fontMetrics.getAscent() + Constants.INNER_MARGIN * 2;
+		int y = Constants.MARGIN*2 + g2.getFontMetrics(Constants.fontTitle).getAscent() - 15;
+		int dy = fontMetrics.getAscent() + Constants.INNER_MARGIN * 2 - 3;
 
 		for (String genre : movie.getGenres())
 		{
@@ -67,7 +77,7 @@ public class Text
             Constants.MARGIN*3 +
             g2.getFontMetrics(Constants.fontTitle).getHeight() +
             Constants.INNER_MARGIN*2 +
-            g2.getFontMetrics(Constants.fontGenre).getHeight();
+            g2.getFontMetrics(Constants.fontGenre).getHeight() - 15;
 
         int x = xBase;
 
@@ -82,7 +92,7 @@ public class Text
 				if ((x + width + Constants.MARGIN) > Constants.WIDTH)
 				{
                     lineNumber++;
-                    x = lineNumber<6 ? xBase : Constants.MARGIN;
+                    x = lineNumber<5 ? xBase : Constants.MARGIN;
 					y += fm.getAscent() + Constants.INNER_MARGIN;
 				}
 

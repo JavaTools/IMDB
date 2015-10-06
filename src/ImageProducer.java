@@ -43,14 +43,7 @@ public class ImageProducer
 		if (movie.getCover()!=null)
             g2.drawImage(movie.getCover(), Constants.MARGIN, Constants.MARGIN, null);
 
-		g2.setFont(Constants.fontTitle);
-		g2.setColor(Color.WHITE);
-		int x = Constants.MARGIN + (movie.getCover()!=null ? Constants.MARGIN + movie.getCover().getWidth() : 0);
-		int y = Constants.MARGIN+g2.getFontMetrics().getAscent();
-		g2.drawString(movie.getTitle(), x, y);
-
-        new Rating().paint(image, movie);
-		
+		Text.paintTitle(image, movie);
 		Text.paintGenres(image, movie);
 		Text.paintStory(image, movie);
 

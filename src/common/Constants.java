@@ -7,7 +7,7 @@ public class Constants
 {
 	public static final int WIDTH = 1280;
 	public static final int HEIGHT = 720;
-	public static final int MARGIN = 30;
+	public static final int MARGIN = 35;
 	public static final int INNER_MARGIN = 10;
 
     public static final Color COLOR_GENRE_BOX = new Color(0x404040);
@@ -33,9 +33,9 @@ public class Constants
 //            fontStory = Font.createFont(Font.TRUETYPE_FONT, ClassLoader.getSystemResourceAsStream("fonts/Gotham-Medium.otf")).deriveFont(Font.PLAIN, 32);
 //            fontTitle = Font.createFont(Font.TRUETYPE_FONT, ClassLoader.getSystemResourceAsStream("fonts/Gotham-Bold.otf")).deriveFont(Font.PLAIN, 50);
 //            fontGenre = Font.createFont(Font.TRUETYPE_FONT, ClassLoader.getSystemResourceAsStream("fonts/Gotham-Medium.otf")).deriveFont(Font.PLAIN, 28);
-            fontStory = Font.createFont(Font.TRUETYPE_FONT, ClassLoader.getSystemResourceAsStream("fonts/Montserrat-Regular.otf")).deriveFont(Font.PLAIN, 32);
-            fontTitle = Font.createFont(Font.TRUETYPE_FONT, ClassLoader.getSystemResourceAsStream("fonts/Montserrat-Bold.otf")).deriveFont(Font.PLAIN, 50);
-            fontGenre = Font.createFont(Font.TRUETYPE_FONT, ClassLoader.getSystemResourceAsStream("fonts/Montserrat-SemiBold.otf")).deriveFont(Font.PLAIN, 28);
+            fontTitle = Font.createFont(Font.TRUETYPE_FONT, ClassLoader.getSystemResourceAsStream("fonts/OpenSans-ExtraBold.ttf")).deriveFont(Font.PLAIN, 62);
+            fontGenre = Font.createFont(Font.TRUETYPE_FONT, ClassLoader.getSystemResourceAsStream("fonts/OpenSans-Bold.ttf")).deriveFont(Font.PLAIN, 28);
+            fontStory = Font.createFont(Font.TRUETYPE_FONT, ClassLoader.getSystemResourceAsStream("fonts/OpenSans-Regular.ttf")).deriveFont(Font.PLAIN, 33);
         }
         catch (Exception ex)
         {
